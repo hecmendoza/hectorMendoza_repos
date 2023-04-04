@@ -1,0 +1,31 @@
+<h2>Personajes <small>Pokemon</small></h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+    <input type="text" (keyup.enter)="buscar(texto.value)" class="form-control" placeholder="Buscar" #texto/>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div *ngFor="let pokemon of personajes; let i = index" class="col-sm-6">
+        <div class="card text-center">
+            <div><img class="card-img-top" style="width: 20%;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="Card image cap"></div>
+            <div class="card-body">
+            <h5 class="card-title text-center">{{pokemon.id}}</h5>
+            <a [routerLink]="['/detalle', pokemon.id]">{{pokemon.name}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-sm-6">
+    <input class="btn btn-primary" type="button" value="< Atras" (click)="pagination(-1)">
+    </div>
+    <div class="col-sm-6 text-right">
+    <input class="btn btn-primary" type="button" value="Siguiente >" (click)="pagination(1)">
+    </div>
+</div>
